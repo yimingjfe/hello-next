@@ -1,0 +1,44 @@
+{
+  "name": "hello-next",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "analyze": "ANALYZE=1 next build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^7.1.4",
+    "axios": "^0.16.2",
+    "babel-plugin-css-modules-transform": "^1.2.7",
+    "css-loader": "^0.28.7",
+    "cssnano": "^3.10.0",
+    "express": "^4.15.4",
+    "koa": "^2.3.0",
+    "koa-router": "^7.2.1",
+    "next": "^3.2.2",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-loader": "^2.0.6",
+    "postcss-modules": "^0.8.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "skeleton-loader": "^1.1.4",
+    "style-loader": "^0.18.2",
+    "trash": "^4.1.0",
+    "webpack-bundle-analyzer": "^2.9.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.0",
+    "eslint": "^4.7.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-react": "^7.3.0",
+    "precss": "^2.0.0",
+    "react-dev-utils": "^4.0.1"
+  }
+}
