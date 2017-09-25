@@ -1,8 +1,9 @@
 /* eslint-disable */
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-// const autoprefixer = require('autoprefixer')
+const autoprefixer = require('autoprefixer')
 const trash = require('trash')
 const fs = require('fs')
+const path = require('path')
 const { ANALYZE } = process.env
 
 module.exports = {
@@ -29,6 +30,7 @@ module.exports = {
     config.module.rules.push(
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'emit-file-loader',
@@ -42,7 +44,6 @@ module.exports = {
               procedure: function (content) {
                 const fileName = `${this._module.userRequest}.json`
                 const classNames = fs.readFileSync(fileName, 'utf8')
-                console.log('trash')
                 trash(fileName)
 
                 return ['module.exports = {',
@@ -53,31 +54,31 @@ module.exports = {
               }
             }
           },
-          'postcss-loader'
+          {
+            loader: 'postcss-loader',
+            options:{
+              plugins: [
+                require('postcss-easy-import')({ prefix: '_' }), // keep this first
+                require('postcss-modules')({
+                  generateScopedName: '[local]-[hash:base64:5]'
+                }),
+                require('precss')(),
+                require('cssnano')(),
+                // require('postcss-cssnext')({
+                //   browsers:[
+                //     '>0%',
+                //     'last 4 versions',
+                //     'Firefox ESR',
+                //     'not ie < 8',
+                //   ]
+                // })
+               require('autoprefixer')
+              ]
+            }
+          }
         ]
       }
     )
-
-    // config.module.rules.push({
-    //   test: /\.css$/,
-    //   include: /node_modules/,
-    //   use: ['style-loader', 'css-loader']
-    // })
-
-    // config.module.rules.push({
-    //   test: /\.css$/,
-    //   exclude: /node_modules/,
-    //   use: [
-    //     'style-loader',
-    //     {
-    //       loader: 'css-loader',
-    //       options: {
-    //         localIdentName: '[hash:8]',
-    //         modules: true
-    //       }
-    //     }
-    //   ]
-    // })
 
     return config
   }

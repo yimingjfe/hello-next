@@ -1,6 +1,9 @@
 .content{
   color: red;
   font-size: 50px;
+  .child{
+    font-size: 20px;
+  }
 }
 .layout{
   margin: 20px;

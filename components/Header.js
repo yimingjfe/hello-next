@@ -2,9 +2,7 @@ import Link from 'next/link'
 // import style from './style.css'
 import Head from 'next/head'
 import { stylesheet, classNames } from './style.css'
-console.log('classNames', classNames)
-console.log('stylesheet', stylesheet)
-
+import * as globalStyles from '../styles/style.css'
 // const linkStyle = {
 //   marginRight: 15
 // }
@@ -16,8 +14,9 @@ const Header = () => (
     </Link>
     <Link href='/about'>
       <a className={classNames.content}>
+        <Head><style dangerouslySetInnerHTML={{ __html: globalStyles.stylesheet }}/></Head>
         <Head><style dangerouslySetInnerHTML={{ __html: stylesheet }} /></Head>
-        About
+        <span className={classNames.child}>About</span>
       </a>
     </Link>
   </div>

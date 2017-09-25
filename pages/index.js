@@ -1,23 +1,21 @@
 import Layout from '../components/MyLayout.js'
 import Link from 'next/link'
 import axios from 'axios'
-
-// const PostLink = (props) => (
-//   <li>
-//     <Link href={`/post?title=${props.title}`} as={`/p/${props.id}`}>
-//       <a>{props.title}</a>
-//     </Link>
-//   </li>
-// )
+import Head from 'next/head'
+import globalStyles from '../styles/style.css'
+import { stylesheet, classNames } from './index.css'
+import cn from 'classnames'
 
 const Index = (props) => (
   <Layout>
+    <Head><style dangerouslySetInnerHTML={{ __html: globalStyles.stylesheet + stylesheet }} /></Head>
     <h1>My Blog</h1>
+    <i className={cn(globalStyles.classNames['iconfont'], globalStyles.classNames['icon-play1'])}></i>
     <ul>
       {props.shows.map(({ show }) => (
         <li key={show.id}>
           <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
-            <a>{show.name}</a>
+            <a className={classNames.ani}>{show.name}</a>
           </Link>
         </li>
       ))}

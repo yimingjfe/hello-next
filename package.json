@@ -17,13 +17,18 @@
     "autoprefixer": "^7.1.4",
     "axios": "^0.16.2",
     "babel-plugin-css-modules-transform": "^1.2.7",
+    "babel-plugin-module-resolver": "^2.7.1",
+    "babel-plugin-wrap-in-js": "^1.1.1",
+    "classnames": "^2.2.5",
     "css-loader": "^0.28.7",
     "cssnano": "^3.10.0",
     "express": "^4.15.4",
     "koa": "^2.3.0",
     "koa-router": "^7.2.1",
     "next": "^3.2.2",
+    "normalize.css": "^7.0.0",
     "postcss-cssnext": "^3.0.2",
+    "postcss-easy-import": "^3.0.0",
     "postcss-loader": "^2.0.6",
     "postcss-modules": "^0.8.0",
     "react": "^15.6.1",
@@ -40,5 +45,11 @@
     "eslint-plugin-react": "^7.3.0",
     "precss": "^2.0.0",
     "react-dev-utils": "^4.0.1"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 10 versions",
+    "Firefox ESR",
+    "not ie < 8"
+  ]
 }
