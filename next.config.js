@@ -1,5 +1,6 @@
 /* eslint-disable */
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const StyleLintPlugin = require('stylelint-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const trash = require('trash')
 const fs = require('fs')
@@ -15,6 +16,10 @@ module.exports = {
         openAnalyzer: true
       }))
     }
+
+    config.plugins.push(new StyleLintPlugin({
+      files: ['pages/*.css','components/*.css']
+    }))
 
     config.plugins = config.plugins.filter(
       (plugin) => (plugin.constructor.name !== 'UglifyJsPlugin')
@@ -58,6 +63,7 @@ module.exports = {
             loader: 'postcss-loader',
             options:{
               plugins: [
+                // require("stylelint")(),
                 require('postcss-easy-import')({ prefix: '_' }), // keep this first
                 require('postcss-modules')({
                   generateScopedName: '[local]-[hash:base64:5]'
