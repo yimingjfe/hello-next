@@ -15,6 +15,12 @@ app.prepare()
       await app.render(ctx.req, ctx.res, actualPage, queryParams)
     })
 
+    router.get('/play/:id', async(ctx) => {
+      const actualPage = '/play'
+      const queryParams = { id: ctx.params.id }
+      await app.render(ctx.req, ctx.res, actualPage, queryParams)
+    })
+
     router.get('*', async(ctx) => {
       return handle(ctx.req, ctx.res)
     })
