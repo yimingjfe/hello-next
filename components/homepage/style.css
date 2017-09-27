@@ -1,0 +1,18 @@
+.homepage{
+  .header{
+    position: relative;
+    .cursors{
+      position: absolute;
+      width: 240px;
+      height: 345px;
+      border-radius: 2px;
+      top: 115px;
+      right: 250px;
+      background-color: rgab(0,0,0,0.5);
+      .cursor{
+        width: 100%;
+        color: #F8F8F4;
+      }
+    }
+  }
+}

@@ -24,6 +24,11 @@ const Index = (props) => (
           <a>play</a>
         </Link>
       </li>
+      <li key='homepage'>
+        <Link href={`/homepage`}>
+          <a>homepage</a>
+        </Link>
+      </li>
     </ul>
   </Layout>
 )
