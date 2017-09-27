@@ -5,6 +5,7 @@ const autoprefixer = require('autoprefixer')
 const trash = require('trash')
 const fs = require('fs')
 const path = require('path')
+const glob = require('glob')
 const { ANALYZE } = process.env
 
 module.exports = {
@@ -31,6 +32,12 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'eslint-loader',
     })
+
+    // config.module.rules.push({
+    //   test: /\.css$/,
+    //   include: /node_modules/,
+    //   use: ['css-loader, style-loader']
+    // })
 
     config.module.rules.push(
       {
@@ -85,6 +92,49 @@ module.exports = {
         ]
       }
     )
+
+    // config.module.rules.push({
+    //   test: /\.css$/,
+    //   exclude: /node_modules/,
+    //   use: [
+    //     {
+    //       loader: 'emit-file-loader',
+    //       options: {
+    //         name: 'dist/[path][name].[ext]'
+    //       },
+    //     },
+    //     {
+    //       loader: 'skeleton-loader',
+    //       options: {
+    //         procedure: function (content) {
+    //           const fileName = `${this._module.userRequest}.json`
+    //           console.log('include', fileName)
+    //           const classNames = fs.readFileSync(fileName, 'utf8')
+    //           trash(fileName)
+    //
+    //           return ['module.exports = {',
+    //             `classNames: ${classNames},`,
+    //             `stylesheet: \`${content}\``,
+    //             '}'
+    //           ].join('')
+    //         }
+    //       }
+    //     },
+    //     {
+    //       loader: 'postcss-loader',
+    //       options: {
+    //         plugins: [
+    //           require('postcss-easy-import')({ prefix: '_' }), // keep this first
+    //           require('postcss-modules')({
+    //             generateScopedName: '[local]-[hash:base64:5]'
+    //           }),
+    //           require('precss')(),
+    //           require('cssnano')(),
+    //         ]
+    //       }
+    //     }
+    //   ]
+    // })
 
     return config
   }

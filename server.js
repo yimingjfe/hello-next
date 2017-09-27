@@ -15,19 +15,24 @@ app.prepare()
       await app.render(ctx.req, ctx.res, actualPage, queryParams)
     })
 
-    router.get('/play/:id', async(ctx) => {
+    router.get('/play', async(ctx) => {
       const actualPage = '/play'
       const queryParams = { id: ctx.params.id }
       await app.render(ctx.req, ctx.res, actualPage, queryParams)
     })
+    // router.get('/play/:id', async(ctx) => {
+    //   const actualPage = '/play'
+    //   const queryParams = { id: ctx.params.id }
+    //   await app.render(ctx.req, ctx.res, actualPage, queryParams)
+    // })
 
     router.get('*', async(ctx) => {
       return handle(ctx.req, ctx.res)
     })
 
-    server.listen(3000, (err) => {
+    server.listen(5677, (err) => {
       if (err) throw err
-      console.log('> Ready on http://localhost:3000')
+      console.log('> Ready on http://localhost:5677')
     })
 
     server.use(router.routes())
